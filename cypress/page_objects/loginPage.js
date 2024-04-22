@@ -19,11 +19,22 @@ export class LoginPage {
     return cy.get('[data-test="login-button"]');
   };
 
-  /**
-   * Logs in the user to the application
-   */
+  get loginError() {
+    return cy.get('[data-test="error"]');
+  };
+
   loginUser(username, password) {
     this.usernameField.type(username);
+    this.passwordField.type(password);
+    this.loginButton.click();
+  };
+
+  submitLoginFormWithUsernameOnly(username) {
+    this.usernameField.type(username);
+    this.loginButton.click();
+  };
+
+  submitLoginFormWithPasswordOnly(password) {
     this.passwordField.type(password);
     this.loginButton.click();
   };
